@@ -10,39 +10,9 @@ const Footer = ({ title }) => {
   const copyrightDate =
     parseInt(since) < currentYear ? since + '-' + currentYear : currentYear
 
-  // 添加一个ref来引用显示运行时间的DOM元素
-  const runtimeRef = React.useRef(null)
-
-  // 使用useEffect来初始化运行时间的更新逻辑
-  React.useEffect(() => {
-    const show_runtime = () => {
-      const X = new Date("2024-06-21 00:00:00"); // 修改起始日期为 2024 年 6 月 21 日
-      const Y = new Date();
-      const T = (Y.getTime() - X.getTime());
-      const M = 24 * 60 * 60 * 1000; // 一天的毫秒数
-      const a = T / M;
-      const A = Math.floor(a);
-      const b = (a - A) * 24;
-      const B = Math.floor(b);
-      const c = (b - B) * 60;
-      const C = Math.floor(c);
-      const D = Math.floor((c - C) * 60);
-
-      // 更新DOM元素的内容
-      if (runtimeRef.current) {
-        runtimeRef.current.innerHTML = "网站在各种灾难中运行了: " + A + "天" + B + "小时" + C + "分" + D + "秒";
-      }
-    }
-
-    // 每秒更新一次运行时间
-    const intervalId = setInterval(show_runtime, 1000);
-
-    // 清理定时器
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <footer className='relative z-10 dark:bg-black flex-shrink-0 bg-hexo-light-gray justify-center text-center m-auto w-full leading-6  text-gray-600 dark:text-gray-100 text-sm p-6'>
+      {/* <DarkModeButton/> */}
       <i className='fas fa-copyright' /> {`${copyrightDate}`}
       <span>
         <i className='mx-1 animate-pulse fas fa-heart' />
@@ -68,8 +38,6 @@ const Footer = ({ title }) => {
         <PoweredBy className='justify-center' />
       </span>
       <br />
-      {/* 添加运行时间显示 */}
-      <span ref={runtimeRef} style={{ color: '#b9b9b9' }}></span>
     </footer>
   )
 }
