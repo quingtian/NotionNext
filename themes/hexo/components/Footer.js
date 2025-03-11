@@ -60,9 +60,7 @@ const Footer = ({ title }) => {
       </span>
       <br />
       <div id="wrapper" className="relative z-10">
-        <h1>欢迎来到我的网站</h1>
-        <p>这是一个示例页面。</p>
-        <span id="runtime_span" style={{ color: '#b9b9b9' }}>{runtime}</span>
+        <span id="runtime_span" style={{ color: 'F2EFE7' }}>{runtime}</span>
       </div>
     </footer>
   );
